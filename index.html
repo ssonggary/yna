@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+    <title>연합뉴스</title>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/gsap.min.js"></script>
+    <script src="./js/ScrollTrigger.min.js"></script>
+    <script src="./js/custom.js" defer></script>
+
+    <link rel="stylesheet" href="./css/font.css" />
+    <style type="text/css">
+      * {
+        margin: 0 auto;
+        font-family: "Brush King";
+        font-weight: 500;
+      }
+      img {
+        border: 0;
+      }
+      li {
+        list-style: none;
+      }
+      body {
+        overflow-x: hidden;
+      }
+      html::-webkit-scrollbar {
+        width: 10px;
+      }
+      html::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      html::-webkit-scrollbar-thumb {
+        background: #ccc;
+        background-clip: padding-box;
+        border: 2px solid transparent;
+        border-radius: 30px;
+      }
+      #wrap {
+        position: relative;
+        width: 100%;
+        min-width: 1920px;
+        padding-top: 50px;
+        padding-left: 130px;
+      }
+      .title-wrap {
+        position: relative;
+        top: 100px;
+        left: 80px;
+        margin-top: 30px;
+        font-size: 36px;
+        color: #fff;
+        opacity: 0;
+        letter-spacing: 11px;
+        line-height: 2.2;
+      }
+      .title-wrap > h1 > span:last-child {
+        display: block;
+        margin-left: 360px;
+      }
+      .video-wrap {
+        filter: brightness(55%);
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: -1;
+      }
+
+      .video-wrap video {
+        width: 100vw;
+        height: 100%;
+        object-fit: cover;
+      }
+      .working-wrap {
+        position: absolute;
+        left: 0;
+        top: 60%;
+        display: flex;
+        flex-wrap: nowrap;
+        height: 100%;
+        margin-left: 158px;
+        opacity: 0;
+      }
+      .working-wrap .type {
+        min-width: 35vw;
+        position: relative;
+      }
+      .working-wrap .type:nth-child(odd) {
+        margin-top: 180px;
+      }
+      .working-wrap .type:last-child {
+        margin-left: -70px;
+      }
+      .working-wrap .type .main-item {
+        text-align: center;
+        width: 380px;
+        height: 510px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        -webkit-backdrop-filter: blur(1px);
+        backdrop-filter: blur(1px);
+        transition: all 0.3s linear;
+        box-shadow: 16px 50px 142px -18px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 16px 50px 142px -18px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 16px 50px 142px -18px rgba(0, 0, 0, 0.75);
+      }
+      .working-wrap .type .main-item > a {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .working-wrap .type .main-item:hover,
+      .working-wrap .type .desc-wrap:hover ~ .main-item {
+        /* opacity: 1; */
+        background: rgba(255, 255, 255, 0.2);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+      }
+      .working-wrap .type .desc-wrap {
+        position: absolute;
+        left: 22px;
+        bottom: -75px;
+        opacity: 0.4;
+        transition: all 0.3s linear;
+      }
+      .working-wrap .type .desc-wrap > a {
+        width: 100%;
+        height: 100%;
+        display: block;
+        text-decoration: none;
+      }
+      .working-wrap .type .main-item:hover + a > .desc-wrap,
+      .working-wrap .type .desc-wrap:hover {
+        opacity: 1;
+      }
+      .working-wrap .type:nth-child(odd) .desc-wrap {
+        bottom: -118%;
+      }
+      .working-wrap .type .desc-wrap .title {
+        color: #fff;
+        font-size: 30px;
+        letter-spacing: 2px;
+        line-height: 2.2;
+      }
+      .working-wrap .type .desc-wrap .title > em {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        color: #fff;
+        text-underline-position: under;
+        display: block;
+        letter-spacing: 0px;
+        margin-bottom: -8px;
+      }
+      .working-wrap .type .desc-wrap .title > span {
+        display: block;
+        margin-left: 100px;
+      }
+      .working-wrap .type .desc-wrap > span {
+        font-family: "Roboto", sans-serif;
+        font-size: 12px;
+        color: #fff;
+        text-underline-position: under;
+        display: block;
+        margin-left: 97px;
+        margin-top: 10px;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- wrap -->
+    <div id="wrap">
+      <div class="title-wrap">
+        <h1>
+          <span>YONHAP NEWS</span> <br />
+          <span>DRAFT PROPOSAL</span>
+        </h1>
+      </div>
+
+      <div class="video-wrap">
+        <video autoplay loop playsinline muted>
+          <source src="./common/video/city.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="working-wrap">
+        <div class="type">
+          <div class="main-item">
+            <a href="./html/type/main_pc.html" target="_blank"></a>
+          </div>
+          <a href="./html/type/main_pc.html" target="_blank">
+            <div class="desc-wrap">
+              <h1 class="title">
+                DESKTOP <br />
+                <span>MAIN</span>
+              </h1>
+              <span>SEE MORE</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="type">
+          <div class="main-item">
+            <a href="./html/type/main_mo_not_login.html" target="_blank"></a>
+          </div>
+          <a href="./html/type/main_mo_not_login.html" target="_blank">
+            <div class="desc-wrap">
+              <h1 class="title">
+                <em>Before Login</em>
+                MOBILE <br />
+                <span>MAIN</span>
+              </h1>
+              <span>SEE MORE</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="type">
+          <div class="main-item">
+            <a href="./html/type/main_mo_login.html" target="_blank"></a>
+          </div>
+          <a href="./html/type/main_mo_login.html" target="_blank">
+            <div class="desc-wrap">
+              <h1 class="title">
+                <em>After Login</em>
+                MOBILE <br />
+                <span>MAIN</span>
+              </h1>
+              <span>SEE MORE</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="type">
+          <div class="main-item">
+            <a href="./html/type/sub_mo.html" target="_blank"></a>
+          </div>
+          <a href="./html/type/sub_mo.html" target="_blank">
+            <div class="desc-wrap">
+              <h1 class="title">
+                MOBILE <br />
+                <span>SUB</span>
+              </h1>
+              <span>SEE MORE</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="type">
+          <div class="main-item">
+            <a href="./html/type/mypage_mo.html" target="_blank"></a>
+          </div>
+          <a href="./html/type/mypage_mo.html" target="_blank">
+            <div class="desc-wrap">
+              <h1 class="title">
+                MOBILE <br />
+                <span>MYPAGE</span>
+              </h1>
+              <span>SEE MORE</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- //wrap -->
+  </body>
+</html>
