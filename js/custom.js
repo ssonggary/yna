@@ -29,3 +29,13 @@ gsap.to(sections, {
 const tl1 = gsap.timeline({ repeatDelay: 0.3 });
 tl1.to(".title-wrap", { autoAlpha: 0.2, top: 0, duration: 1 });
 tl1.to(".working-wrap", { autoAlpha: 1, top: "45%", duration: 0.9 });
+
+// var sound = new Howl({
+//   src: ["./common/audio/audio.mp3"],
+//   autoplay: true,
+//   volume: 1,
+//   onend: function () {
+//     console.log("Finished!");
+//   },
+// });
+// sound.play();

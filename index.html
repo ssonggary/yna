@@ -9,6 +9,7 @@
     <script src="./js/jquery-3.6.0.min.js"></script>
     <script src="./js/gsap.min.js"></script>
     <script src="./js/ScrollTrigger.min.js"></script>
+    <script src="./js/howler.min.js"></script>
     <script src="./js/custom.js" defer></script>
 
     <link rel="stylesheet" href="./css/font.css" />
@@ -46,6 +47,15 @@
         padding-top: 50px;
         padding-left: 130px;
       }
+
+      .audio-wrap {
+        position: absolute;
+        top: 20px;
+        right: 0;
+        z-index: 10;
+        padding-right: 20px;
+      }
+
       .title-wrap {
         position: relative;
         top: 100px;
@@ -181,6 +191,17 @@
           <span>DRAFT PROPOSAL</span>
         </h1>
       </div>
+
+      <div class="audio-wrap">
+        <audio autoplay loop>
+          <source src="./common/audio/audio.mp3" type="audio/mp3" />
+        </audio>
+      </div>
+
+      <!-- <iframe src="./common/audio/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+      <audio id="audio" autoplay="autoplay">
+        <source src="./common/audio/audio.mp3" type="audio/mp3" />
+      </audio> -->
 
       <div class="video-wrap">
         <video autoplay loop playsinline muted>
